@@ -21,7 +21,10 @@ export const Search = styled.section`
   margin-top: 1rem;
 `
 export const Logo = styled.img`
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
+  width: 20rem;
+  height: 13rem;
+  border-radius: 50%;
 `
 export const Map = styled.div`
   background-color: red;
@@ -29,7 +32,7 @@ export const Map = styled.div`
 `
 export const Carousel = styled(Slider)`
   .slick-slide {
-    margin-right: 1rem;
+    margin-right: 2rem;
   }
 `
 

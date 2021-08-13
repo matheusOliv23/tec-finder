@@ -13,3 +13,29 @@ Foi instalado e utilizado o @material/react-text-field para implementar a barra 
 ## PARTE 2 - CAROUSEL
 
 Nessa segunda parte implementamos e estilizamos o carousel do projeto.
+
+## PARTE 3 - DESENVOLVIMENTO DE COMPONENTES
+
+Utilização da biblioteca react-rating-stars-component.
+
+Criação e estilização dos cards.
+
+Conceito de Portals e criação do Modal. Lógica de abrir e fechar a janela ao clicar. Muito interessante.
+
+Configurar modal para ser fechado utilizando a tecla ESC.
+
+## PARTE 4 - CRIAÇÃO E IMPLEMENTAÇÃO DA API GOOGLE
+
+Implementamos a API do google maps no projeto.
+
+Configuramos a API para que busque tipos de locais especificos.
+
+Decidi que buscaria por lojas de eletronicos, então no type da configuração da API do google places eu coloquei 'eletronics_store'.
+
+## PARTE 5 - REDUX E MARKER
+
+Criamos uma pasta redux no projeto e implementamos ele.
+
+Utilização da API do google para identificar e mudar automaticamente os nomes, imagens e rating(estrelas) dos locais pesquisados. Foi implementado tanto para o carousel quanto para os cards.
+
+## PARTE 6 - ABRIR DETALHES DO CARD
