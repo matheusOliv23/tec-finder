@@ -8,18 +8,23 @@ import {
   Search,
   Logo,
   Wrapper,
-  CarouselTitle
+  CarouselTitle,
+  ModalTitle,
+  ModalContent
 } from './style'
 
 import logo from '../../assets/logo.png'
 import eletronico from '../../assets/logo.png'
-import { Card, Modal, EletronicCard, Map } from '../../components'
+import { Card, Modal, EletronicCard, Map, Loader } from '../../components'
 
 const Home = () => {
   const [inputValue, setInputValue] = useState('')
   const [query, setQuery] = useState(null)
-  const [modalOpened, setModalOpened] = useState(true)
-  const { eletronics } = useSelector(state => state.eletronics)
+  const [modalOpened, setModalOpened] = useState(false)
+  const [placeId, setPlaceId] = useState(null)
+  const { eletronics, eletronicsSelected } = useSelector(
+    state => state.eletronics
+  )
 
   const settings = {
     dots: false,
@@ -37,6 +42,10 @@ const Home = () => {
     }
   }
 
+  function handleOpenModal(placeId) {
+    setPlaceId(placeId)
+    setModalOpened(true)
+  }
   return (
     <Wrapper>
       <Container>
@@ -49,24 +58,47 @@ const Home = () => {
               onChange={e => setInputValue(e.target.value)}
             />
           </TextField>
-          <CarouselTitle>Na sua região</CarouselTitle>
-          <Carousel {...settings}>
-            {eletronics.map(eletronic => (
-              <Card
-                key={eletronic.place_id}
-                photo={
-                  eletronic.photos ? eletronic.photos[0].getUrl() : eletronico
-                }
-                title={eletronic.name}
-              />
-            ))}
-          </Carousel>
+          {eletronics.length > 0 ? (
+            <>
+              <CarouselTitle>Na sua região</CarouselTitle>
+              <Carousel {...settings}>
+                {eletronics.map(eletronic => (
+                  <Card
+                    key={eletronic.place_id}
+                    photo={
+                      eletronic.photos
+                        ? eletronic.photos[0].getUrl()
+                        : eletronico
+                    }
+                    title={eletronic.name}
+                  />
+                ))}
+              </Carousel>
+            </>
+          ) : (
+            <Loader />
+          )}
         </Search>
         {eletronics.map(eletronic => (
-          <EletronicCard eletronic={eletronic} />
+          <EletronicCard
+            onClick={() => handleOpenModal(eletronic.place_id)}
+            eletronic={eletronic}
+          />
         ))}
       </Container>
-      <Map query={query} />
+      <Map query={query} placeId={placeId} />
+      <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}>
+        <ModalTitle>{eletronicsSelected?.name}</ModalTitle>
+        <ModalContent>
+          {eletronicsSelected?.formatted_phone_number}
+        </ModalContent>
+        <ModalContent>{eletronicsSelected?.formatted_address}</ModalContent>
+        <ModalContent>
+          {eletronicsSelected?.opening_hours?.open_now
+            ? 'Aberto agora! :)'
+            : 'Está fechado no momento :('}
+        </ModalContent>
+      </Modal>
     </Wrapper>
   )
 }

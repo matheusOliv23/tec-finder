@@ -11,8 +11,8 @@ import {
 
 import eletronico from '../../assets/logo.png'
 
-const EletronicCard = ({ eletronic }) => (
-  <Eletronic>
+const EletronicCard = ({ eletronic, onClick }) => (
+  <Eletronic onClick={onClick}>
     <EletronicInfo>
       <Title>{eletronic.name}s</Title>
       <ReactStars

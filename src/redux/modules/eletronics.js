@@ -14,7 +14,7 @@ export default function reducer(state = initialState, action) {
       return { ...state, eletronics: action.payload }
       break
     case Types.SET_ELETRONIC:
-      return { ...state, eletronic: action.payload }
+      return { ...state, eletronicsSelected: action.payload }
     default:
       return state
   }

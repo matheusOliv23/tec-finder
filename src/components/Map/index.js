@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react'
 
-import { setEletronics } from '../../redux/modules/eletronics'
+import { setEletronics, setEletronic } from '../../redux/modules/eletronics'
 
 export const MapContainer = props => {
   const dispatch = useDispatch()
   const { eletronics } = useSelector(state => state.eletronics)
   const [map, setMap] = useState(null)
-  const { google, query } = props
+  const { google, query, placeId } = props
 
   useEffect(() => {
     if (query) {
@@ -16,8 +16,35 @@ export const MapContainer = props => {
     }
   }, [query])
 
+  useEffect(() => {
+    if (placeId) {
+      getEletronicById(placeId)
+    }
+  }, [placeId])
+
+  function getEletronicById(placeId) {
+    const service = new google.maps.places.PlacesService(map)
+    dispatch(setEletronic(null))
+    const request = {
+      placeId,
+      fields: [
+        'name',
+        'opening_hours',
+        'formatted_address',
+        'formatted_phone_number'
+      ]
+    }
+
+    service.getDetails(request, (place, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK)
+        dispatch(setEletronic(place))
+    })
+  }
+
   function searchByQuery(query) {
     const service = new google.maps.places.PlacesService(map)
+    dispatch(setEletronics([]))
+
     const request = {
       location: map.center,
       radius: '2000',
@@ -33,6 +60,7 @@ export const MapContainer = props => {
 
   function searchNearby(map, center) {
     const service = new google.maps.places.PlacesService(map)
+    dispatch(setEletronics([]))
 
     const request = {
       location: center,
@@ -57,6 +85,7 @@ export const MapContainer = props => {
       centerAroundCurrentLocation
       onReady={onMapReady}
       onRecenter={onMapReady}
+      {...props}
     >
       {eletronics.map(eletronic => (
         <Marker
