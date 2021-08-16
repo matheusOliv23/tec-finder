@@ -47,7 +47,7 @@ export const MapContainer = props => {
 
     const request = {
       location: map.center,
-      radius: '3000',
+      radius: '10000',
       type: ['electronics_store'],
       query
     }
