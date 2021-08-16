@@ -37,6 +37,7 @@ export const Address = styled.span`
 `
 
 export const EletronicPhoto = styled.img`
+  display: ${props => (props.imageLoaded ? 'block' : 'none')};
   width: 100px;
   height: 100px;
   border-radius: 6px;

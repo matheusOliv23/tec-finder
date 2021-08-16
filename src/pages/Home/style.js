@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 import Slider from 'react-slick'
+import px2vw from '../../utils/px2vw'
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 export const Container = styled.aside`
@@ -11,6 +15,10 @@ export const Container = styled.aside`
   width: 360px;
   height: 100vh;
   overflow-y: auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 export const Search = styled.section`
   display: flex;

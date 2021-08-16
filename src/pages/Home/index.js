@@ -15,7 +15,14 @@ import {
 
 import logo from '../../assets/logo.png'
 import eletronico from '../../assets/logo.png'
-import { Card, Modal, EletronicCard, Map, Loader } from '../../components'
+import {
+  Card,
+  Modal,
+  EletronicCard,
+  Map,
+  Loader,
+  Skeleton
+} from '../../components'
 
 const Home = () => {
   const [inputValue, setInputValue] = useState('')
@@ -88,16 +95,27 @@ const Home = () => {
       </Container>
       <Map query={query} placeId={placeId} />
       <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}>
-        <ModalTitle>{eletronicsSelected?.name}</ModalTitle>
-        <ModalContent>
-          {eletronicsSelected?.formatted_phone_number}
-        </ModalContent>
-        <ModalContent>{eletronicsSelected?.formatted_address}</ModalContent>
-        <ModalContent>
-          {eletronicsSelected?.opening_hours?.open_now
-            ? 'Aberto agora! :)'
-            : 'Está fechado no momento :('}
-        </ModalContent>
+        {eletronicsSelected ? (
+          <>
+            <ModalTitle>{eletronicsSelected?.name}</ModalTitle>
+            <ModalContent>
+              {eletronicsSelected?.formatted_phone_number}
+            </ModalContent>
+            <ModalContent>{eletronicsSelected?.formatted_address}</ModalContent>
+            <ModalContent>
+              {eletronicsSelected?.opening_hours?.open_now
+                ? 'Aberto agora! :)'
+                : 'Está fechado no momento :('}
+            </ModalContent>
+          </>
+        ) : (
+          <>
+            <Skeleton width="0.5rem" height="0.5rem" />
+            <Skeleton width="0.5rem" height="0.5rem" />
+            <Skeleton width="0.5rem" height="0.5rem" />
+            <Skeleton width="0.5rem" height="0.5rem" />
+          </>
+        )}
       </Modal>
     </Wrapper>
   )
