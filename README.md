@@ -5,6 +5,8 @@
 O objetivo desse projeto foi estudar e aprender o básico de React e aplicar a API do google maps.
 A fonte foi o bootcamp LocalizaLabs da plaforma Digital Innovation One.
 
+O projeto original é um localizador de restaurantes (não responsivo).
+
 ##DESCRIÇÃO
 
 O projeto tem como finalidade localizar lojas relacionadas a área de eletrônicos em um raio de 3km.
