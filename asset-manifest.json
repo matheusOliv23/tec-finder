@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/tec-finder/static/css/main.969b5430.chunk.css",
+    "main.js": "/tec-finder/static/js/main.462413b2.chunk.js",
+    "main.js.map": "/tec-finder/static/js/main.462413b2.chunk.js.map",
+    "runtime-main.js": "/tec-finder/static/js/runtime-main.34acc285.js",
+    "runtime-main.js.map": "/tec-finder/static/js/runtime-main.34acc285.js.map",
+    "static/css/2.68164746.chunk.css": "/tec-finder/static/css/2.68164746.chunk.css",
+    "static/js/2.a437e258.chunk.js": "/tec-finder/static/js/2.a437e258.chunk.js",
+    "static/js/2.a437e258.chunk.js.map": "/tec-finder/static/js/2.a437e258.chunk.js.map",
+    "index.html": "/tec-finder/index.html",
+    "static/css/2.68164746.chunk.css.map": "/tec-finder/static/css/2.68164746.chunk.css.map",
+    "static/css/main.969b5430.chunk.css.map": "/tec-finder/static/css/main.969b5430.chunk.css.map",
+    "static/js/2.a437e258.chunk.js.LICENSE.txt": "/tec-finder/static/js/2.a437e258.chunk.js.LICENSE.txt",
+    "static/media/slick-theme.css": "/tec-finder/static/media/slick.c94f7671.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.34acc285.js",
+    "static/css/2.68164746.chunk.css",
+    "static/js/2.a437e258.chunk.js",
+    "static/css/main.969b5430.chunk.css",
+    "static/js/main.462413b2.chunk.js"
+  ]
+}
